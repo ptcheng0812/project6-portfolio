@@ -4,13 +4,10 @@ import crypto from 'crypto'
 
 import { User } from '@/db/models'
 import session from '@/api/helpers/session'
-import passport from '@/api/helpers/passport'
 
 const authEmailSignup = async (req, res) => {
   const user = await User.build({
-    ...req.body, registrationType: 'email'
-  }, {
-    attributes: ['email', 'passwordHash', 'registrationType']
+    ...req.body
   })
   user.passwordHash = await bcrypt.hash(req.body.password, 10)
   await user.save()
@@ -26,6 +23,4 @@ const authEmailSignup = async (req, res) => {
 
 export default nc()
   .use(session)
-  .use(passport.initialize())
-  .use(passport.session())
   .use(authEmailSignup)

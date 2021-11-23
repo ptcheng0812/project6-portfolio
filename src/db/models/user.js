@@ -1,15 +1,26 @@
 const { Model } = require('sequelize')
-const UserSchema = require('../schema/user')
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.AuthenticityTokens = this.hasMany(models.AuthenticityToken, { onDelete: 'CASCADE', hooks: true })
+      User.AuthenticityTokens = this.hasMany(models.AuthenticityToken)
+      User.Threads = this.hasMany(models.Thread)
+      User.Posts = this.hasMany(models.Post)
+      User.Favourites = this.hasMany(models.Favourite)
+      User.FavouritedPosts = this.belongsToMany(models.Post, { through: 'Favourite' })
+      User.Notifications = this.hasMany(models.Notification)
     }
   }
-
-  const { tableAttributes } = UserSchema(sequelize, DataTypes)
-  User.init(tableAttributes, {
+  User.init({
+    email: DataTypes.STRING,
+    passwordHash: DataTypes.STRING,
+    name: DataTypes.STRING,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    dateOfBirth: DataTypes.STRING,
+    introduction: DataTypes.STRING,
+    avatar: DataTypes.STRING
+  }, {
     sequelize,
     modelName: 'User'
   })

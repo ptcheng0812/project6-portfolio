@@ -1,0 +1,37 @@
+const posts = await Post.findAll({
+  where: {
+    ThreadId: params.id
+  },
+  include: [
+    {
+      association: Post.Favourites,
+      where: {
+        UserId: currentUser.id
+      }
+    }, {
+      association: Post.User
+    }
+  ]
+})
+
+posts = [
+  {
+    id: '',
+    content
+    ThreadId
+    UserId,
+    User: { // Owner Info
+      id: '',
+      avatar: ''
+    },
+    Favourites: [
+      // empty or 1 record
+      // empty if currentUser did not favourte post yet
+      {
+        id: '',
+        PostId,
+        UserId
+      }
+    ]
+  }
+]

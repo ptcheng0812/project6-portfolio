@@ -6,7 +6,7 @@ export default function useUser() {
   const { data, error } = useSWR('/api/my/profile', fetcher)
 
   return {
-    user: data?.user || null,
+    currentUser: data?.currentUser || null,
     isLoading: !error && !data,
     isError: error,
     errorMessage: error?.response?.data?.message
