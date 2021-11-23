@@ -4,9 +4,6 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 
-import useAuthSignUp from '@/hooks/auth/signup'
-import useAuthLogin from '@/hooks/auth/login'
-import useAuthLogout from '@/hooks/auth/logout'
 import useUser from '@/_hooks/user'
 import CompsModalsAuthSignUp from '@/components/modals/auth/signup'
 import CompsModalsAuthLogin from '@/components/modals/auth/login'
@@ -15,10 +12,7 @@ export default function CompsLayoutsNavbar() {
   const [openAuthSignUp, setAuthSignUp] = useState(false)
   const [openAuthLogin, setAuthLogin] = useState(false)
 
-  const { authSignUp } = useAuthSignUp()
-  const { authLogin } = useAuthLogin()
-  const { authLogout } = useAuthLogout()
-  const { currentUser } = useUser()
+  const { currentUser, authSignUp, authLogin, authLogout } = useUser()
 
   return (
     <>

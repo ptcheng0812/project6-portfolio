@@ -6,6 +6,8 @@ import withPrivateRoute from '@/_hocs/withPrivateRoute'
 function PagesPrivate() {
   const { user } = useUser()
 
+  if (!user) return null
+
   return (
     <CompsLayout>
       <div id="pages-private">
