@@ -14,17 +14,23 @@ const RenderForm = ({ errors, handleSubmit, isSubmitting }) => (
       <ErrorMessage component="div" name="title" className="invalid-feedback" />
     </div>
 
-    {/* <div className="mb-3">
+    <div className="mb-3">
       <label htmlFor="category">Choose a category:</label>
-      <select name="category" id="category">
+      <Field
+        as="select"
+        id="category"
+        name="category"
+        className={`form-control ${errors.category && 'is-invalid'}`}
+      >
         <option value="Depression">Depression</option>
         <option value="Anxiety">Anxiety</option>
         <option value="PTSD">PTSD</option>
         <option value="Bipolar">Bipolar</option>
         <option value="Others">Others</option>
-      </select>
+
+      </Field>
       <ErrorMessage component="div" name="category" className="invalid-feedback" />
-    </div> */}
+    </div>
 
     <div className="text-end">
       <button
@@ -37,8 +43,8 @@ const RenderForm = ({ errors, handleSubmit, isSubmitting }) => (
 )
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().min(2, 'Too Short!').required('Required')
-  // category: Yup.string().required('Category is required')
+  title: Yup.string().min(2, 'Too Short!').required('Required'),
+  category: Yup.string().required('Category is required')
 })
 
 export default function CompsFormsThreadsChange({ handleSubmit, initialValues }) {

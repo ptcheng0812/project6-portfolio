@@ -1,9 +1,11 @@
-import useSWR, { mutate } from 'swr'
+import useSWR from 'swr'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 import fetcher from '@/_services/fetcher'
 
 export default function useUser() {
+  const router = useRouter()
   const { data, error } = useSWR('/api/my/profile', fetcher, {
     shouldRetryOnError: false
   })
@@ -16,7 +18,6 @@ export default function useUser() {
       withCredentials: true
     }).then((resp) => {
       resolve(resp)
-      mutate(resp.data)
     }).catch((err) => {
       reject(err)
     })
@@ -30,7 +31,6 @@ export default function useUser() {
       withCredentials: true
     }).then((resp) => {
       resolve(resp)
-      mutate(resp.data)
     }).catch((err) => {
       reject(err)
     })
@@ -43,7 +43,7 @@ export default function useUser() {
       withCredentials: true
     }).then((resp) => {
       resolve(resp)
-      mutate(null)
+      router.reload('/')
     }).catch((err) => {
       reject(err)
     })

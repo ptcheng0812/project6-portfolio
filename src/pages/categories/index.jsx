@@ -1,15 +1,10 @@
 import CompsLayout from '@/components/layouts/Layout'
-import useThreads from '@/_hooks/threads'
 
 export default function PagesCategoriesIndex() {
-  const { threads } = useThreads()
-
-  console.log(threads)
-
   return (
     <CompsLayout>
       <div id="pages-categories-index">
-        <h1>Next Starter</h1>
+        <h1>Category</h1>
       </div>
     </CompsLayout>
   )
