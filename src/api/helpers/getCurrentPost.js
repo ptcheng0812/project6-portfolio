@@ -1,6 +1,4 @@
-import nc from 'next-connect'
 import { Post } from '@/db/models'
-import getCurrentThread from '@/api/helpers/getCurrentThread'
 
 const getCurrentPost = async (req, res, next) => {
   const { query: { postId } } = req
@@ -19,6 +17,4 @@ const getCurrentPost = async (req, res, next) => {
   return next()
 }
 
-export default nc()
-  .use(getCurrentThread)
-  .use(getCurrentPost)
+export default getCurrentPost

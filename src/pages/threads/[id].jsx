@@ -2,28 +2,43 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import useThread from '@/_hooks/thread'
+import useUser from '@/_hooks/user'
 
 import CompsLayout from '@/components/layouts/Layout'
 import CompsModalsThreadsUpdate from '@/components/modals/threads/update'
+import CompsModalsPostsCreate from '@/components/modals/posts/create'
+import CompsModalsPostsUpdate from '@/components/modals/posts/update'
 
 export default function PagesThreadShow() {
   const [openThreadsUpdate, setOpenThreadsUpdate] = useState(false)
+  const [openPostsCreate, setOpenPostsCreate] = useState(false)
+  const [openPostsUpdate, setOpenPostsUpdate] = useState(false)
+  const [selectedPost, setSelectedPost] = useState({})
   const { query: { id } } = useRouter()
 
-  const { thread, updateThread, destroyThread } = useThread(id)
+  const { thread, postsIds, updateThread, destroyThread, createPost, updatePost, destroyPost } = useThread(id)
+  const { currentUser } = useUser()
 
-  console.log('>>>>>>>>>', thread)
+  console.log('>>>>>>>>>thread', thread)
+  console.log('>>>>>>>>thread.Posts>', thread?.Posts)
+  console.log('>>>>>>>>>>currentUser', currentUser)
 
   return (
     <CompsLayout>
       <div id="pages-categories-index" className="text-center">
         <h1>Thread {thread?.id}</h1>
+        <h3> {thread?.title} </h3>
         <div className="d-flex justify-content-around">
           <button
             className="btn btn-primary btn-sm"
             type="button"
             onClick={() => setOpenThreadsUpdate(true)}
           >Edit</button>
+          <button
+            className="btn btn-success btn-sm"
+            type="button"
+            onClick={() => setOpenPostsCreate(true)}
+          >New Post</button>
           <button
             className="btn btn-danger btn-sm"
             type="button"
@@ -32,6 +47,39 @@ export default function PagesThreadShow() {
         </div>
       </div>
 
+      <main id="thread-main-group" className="thread-main-group text-center">
+        {
+          thread?.Posts?.map((post) => (
+            <>
+              <div key={post.id}>
+                <a>{post?.content}</a>
+              </div>
+              {post?.UserId === currentUser?.id
+                && (
+                <div className="container d-flex justify-content-around">
+                  <button
+                    className="btn btn-primary btn-sm"
+                    type="button"
+                    onClick={() => {
+                      setSelectedPost(post)
+                      setOpenPostsUpdate(true)
+                    }}
+                  >Edit Post</button>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    type="button"
+                    disabled={postsIds.includes(post.id)}
+                    onClick={() => {
+                      destroyPost(post)
+                    }}
+                  >Delete Post</button>
+                </div>
+                )}
+            </>
+          ))
+        }
+      </main>
+
       <CompsModalsThreadsUpdate
         show={openThreadsUpdate}
         initialValues={thread}
@@ -39,6 +87,27 @@ export default function PagesThreadShow() {
         handleSubmit={(values) => {
           updateThread(values).then(() => {
             setOpenThreadsUpdate(false)
+          })
+        }}
+      />
+
+      <CompsModalsPostsCreate
+        show={openPostsCreate}
+        handleClose={() => setOpenPostsCreate(false)}
+        handleSubmit={(values) => {
+          createPost(values).then(() => {
+            setOpenPostsCreate(false)
+          })
+        }}
+      />
+
+      <CompsModalsPostsUpdate
+        show={openPostsUpdate}
+        initialValues={selectedPost}
+        handleClose={() => setOpenPostsUpdate(false)}
+        handleSubmit={(values) => {
+          updatePost(values).then(() => {
+            setOpenPostsUpdate(false)
           })
         }}
       />

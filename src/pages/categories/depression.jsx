@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 
 import CompsLayout from '@/components/layouts/Layout'
 import useThreads from '@/_hooks/threads'
@@ -11,7 +12,7 @@ export default function PagesCategoriesDepression() {
 
   return (
     <CompsLayout>
-      <div id="pages-categories-depression" className="text-center">
+      <div id="pages-categories-depression" className="pages-categories-show text-center">
         <h1>Depression</h1>
         <div className="btn-group">
           <button
@@ -22,13 +23,15 @@ export default function PagesCategoriesDepression() {
         </div>
       </div>
 
-      <main id="threads-main-group" className="text-center">
+      <main id="threads-main-group" className="threads-main-group text-center">
         {
           threads?.map((thread) => (
             thread.category === 'Depression'
             && (
             <div key={thread.id}>
-              <a>{thread.title}</a>
+              <Link href={`/threads/${thread.id}`}>
+                <a>{thread.title}</a>
+              </Link>
             </div>
             )
 

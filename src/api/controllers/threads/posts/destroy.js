@@ -1,5 +1,4 @@
 import nc from 'next-connect'
-import getCurrentPost from '@/api/helpers/getCurrentPost'
 
 const threadPostsDestroy = async (req, res) => {
   const { currentPost } = res
@@ -10,5 +9,4 @@ const threadPostsDestroy = async (req, res) => {
 }
 
 export default nc()
-  .use(getCurrentPost)
   .use(threadPostsDestroy)

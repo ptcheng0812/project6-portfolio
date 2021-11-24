@@ -1,16 +1,26 @@
 import nc from 'next-connect'
-import getCurrentThread from '@/api/helpers/getCurrentThread'
+
+import { Post } from '@/db/models'
 
 const threadPostsCreate = async (req, res) => {
-  const { currentThread } = res
+  const { currentThread, currentUser } = res
 
-  const post = await currentThread.createPost(req.body, {
-    fields: ['content']
+  const post = await Post.create({
+    ...req.body,
+    UserId: currentUser.id,
+    ThreadId: currentThread.id
+  }, {
+    include: [
+      {
+        association: Post.Thread
+      }, {
+        association: Post.User
+      }
+    ]
   })
 
   res.status(200).json({ post })
 }
 
 export default nc()
-  .use(getCurrentThread)
   .use(threadPostsCreate)
