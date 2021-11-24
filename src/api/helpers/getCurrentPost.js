@@ -8,7 +8,8 @@ const getCurrentPost = async (req, res, next) => {
     where: {
       id: Number(postId) || 0,
       ThreadId: currentThread.id
-    }
+    },
+    include: Post.Favourites
   })
 
   if (!currentPost) return res.status(404).json({ message: 'Post Not Found' })

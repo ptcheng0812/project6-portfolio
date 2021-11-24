@@ -8,8 +8,8 @@ const RenderForm = ({ errors, handleSubmit, isSubmitting }) => (
       <Field
         id="content"
         name="content"
-        type="textarea"
-        rows="7"
+        as="textarea"
+        rows="20"
         className={`form-control ${errors.content && 'is-invalid'}`}
       />
       <ErrorMessage component="div" name="content" className="invalid-feedback" />

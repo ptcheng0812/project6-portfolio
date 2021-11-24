@@ -10,13 +10,7 @@ const threadPostsCreate = async (req, res) => {
     UserId: currentUser.id,
     ThreadId: currentThread.id
   }, {
-    include: [
-      {
-        association: Post.Thread
-      }, {
-        association: Post.User
-      }
-    ]
+    include: Post.Favourites
   })
 
   res.status(200).json({ post })
