@@ -4,7 +4,7 @@ const threadPostsUpdate = async (req, res) => {
   const { currentPost } = res
 
   await currentPost.update(req.body, {
-    fields: ['content']
+    fields: ['content', 'liked']
   })
   await currentPost.reload()
 

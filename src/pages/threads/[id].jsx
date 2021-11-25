@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 import useThread from '@/_hooks/thread'
 import useUser from '@/_hooks/user'
+import useFavourites from '@/_hooks/favourites'
 
 import CompsLayout from '@/components/layouts/Layout'
 import CompsModalsThreadsUpdate from '@/components/modals/threads/update'
@@ -18,10 +19,14 @@ export default function PagesThreadShow() {
 
   const { thread, postsIds, updateThread, destroyThread, createPost, updatePost, destroyPost } = useThread(id)
   const { currentUser } = useUser()
+  const { favourites, createFavourite, destroyFavourite } = useFavourites()
+  const myFavouritesPostsIds = favourites?.map((favourite) => favourite.PostId)
 
   console.log('>>>>>>>>>thread', thread)
   console.log('>>>>>>>>thread.Posts>', thread?.Posts)
   console.log('>>>>>>>>>>currentUser', currentUser)
+  console.log('>>>>>>>>>>favourites', favourites)
+  console.log('>>>>>>>>>>>myFavouritesPostsIds', myFavouritesPostsIds)
 
   return (
     <CompsLayout>
@@ -74,6 +79,26 @@ export default function PagesThreadShow() {
                     }}
                   >Delete Post</button>
                 </div>
+                )}
+              {myFavouritesPostsIds?.includes(post.id)
+                && (
+                  <button
+                    className="btn btn-info btn-sm"
+                    type="button"
+                    onClick={() => {
+                      destroyFavourite(post)
+                    }}
+                  >Marked</button>
+                )}
+              {!myFavouritesPostsIds?.includes(post.id)
+                && (
+                  <button
+                    className="btn btn-info btn-sm"
+                    type="button"
+                    onClick={() => {
+                      createFavourite(post)
+                    }}
+                  >Mark as Favourite</button>
                 )}
             </>
           ))

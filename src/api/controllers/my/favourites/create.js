@@ -1,13 +1,18 @@
 import nc from 'next-connect'
 
-import { Post } from '@/db/models'
+import { Post, Favourite } from '@/db/models'
+import getCurrentUserByToken from '@/api/helpers/getCurrentUserByToken'
+// import getCurrentPost from '@/api/helpers/getCurrentPost'
 
 const favouritesCreate = async (req, res) => {
-  const { currentPost, currentUser } = res
+  const { currentUser } = res
 
-  const favourite = currentPost.create({
+  console.log('req.body>>>>>>>>>', req.body)
+  console.log('currentUser>>>>>>>', currentUser)
+
+  const favourite = await Favourite.create({
     UserId: currentUser.id,
-    PostId: currentPost.id
+    PostId: req.body.id
   }, {
     include: Post.Favourites
   })
@@ -16,4 +21,6 @@ const favouritesCreate = async (req, res) => {
 }
 
 export default nc()
+  .use(getCurrentUserByToken)
+  // .use(getCurrentPost)
   .use(favouritesCreate)

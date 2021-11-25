@@ -79,7 +79,6 @@ export default function useThread(id) {
     setPostsIds(produce(postsIds, (draft) => {
       draft.push(values.id)
     }))
-    console.log('value>>>>>>>>>>', values)
     axios({
       method: 'DELETE',
       url: `/api/threads/${id}/posts/${values.id}`
