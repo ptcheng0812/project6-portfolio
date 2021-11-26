@@ -1,14 +1,18 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('AuthenticityToken', {
+  return sequelize.define('Notification', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    token: {
+    message: {
       type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    ReceivedUserId: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     UserId: {
@@ -17,12 +21,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'AuthenticityTokens',
+    tableName: 'Notifications',
     schema: 'public',
     timestamps: true,
     indexes: [
       {
-        name: "AuthenticityTokens_pkey",
+        name: "Notifications_pkey",
         unique: true,
         fields: [
           { name: "id" },

@@ -5,15 +5,15 @@ import CompsLayout from '@/components/layouts/Layout'
 import useThreads from '@/_hooks/threads'
 import CompsModalsThreadsCreate from '@/components/modals/threads/create'
 
-export default function PagesCategoriesDepression() {
+export default function PagesCategoriesPTSD() {
   const [openThreadsCreate, setThreadsCreate] = useState(false)
 
   const { threads, createThread } = useThreads()
 
   return (
     <CompsLayout>
-      <div id="pages-categories-depression" className="pages-categories-show text-center">
-        <h1>Depression</h1>
+      <div id="pages-categories-ptsd" className="pages-categories-show text-center">
+        <h1>PTSD</h1>
         <div className="btn-group">
           <button
             className="btn btn-primary btn-sm"
@@ -26,7 +26,7 @@ export default function PagesCategoriesDepression() {
       <main id="threads-main-group" className="threads-main-group text-center">
         {
           threads?.map((thread) => (
-            thread.category === 'Depression'
+            thread.category === 'PTSD'
             && (
             <div key={thread.id}>
               <Link href={`/threads/${thread.id}`}>

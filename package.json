@@ -1,12 +1,12 @@
 {
-  "name": "project-4-touch",
+  "name": "project-4-touch_development",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gen-models": "sequelize-auto -o './src/db/schema' -d [your_project_name_here]_development -h localhost -p 5432 -e postgres --cf l --sg true -x '12345678' -u postgres"
+    "gen-models": "sequelize-auto -o './src/db/schema' -d project_4_touch_development -h localhost -p 5432 -e postgres --cf l --sg true -x '12345678' -u postgres"
   },
   "dependencies": {
     "axios": "^0.24.0",

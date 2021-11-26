@@ -6,7 +6,7 @@ import fetcher from '@/_services/fetcher'
 
 export default function useUser() {
   const router = useRouter()
-  const { data, error } = useSWR('/api/my/profile', fetcher, {
+  const { data, error, mutate } = useSWR('/api/my/profile', fetcher, {
     shouldRetryOnError: false
   })
 
@@ -18,6 +18,7 @@ export default function useUser() {
       withCredentials: true
     }).then((resp) => {
       resolve(resp)
+      mutate(resp.data)
     }).catch((err) => {
       reject(err)
     })
@@ -31,6 +32,7 @@ export default function useUser() {
       withCredentials: true
     }).then((resp) => {
       resolve(resp)
+      mutate(resp.data)
     }).catch((err) => {
       reject(err)
     })
@@ -49,6 +51,21 @@ export default function useUser() {
     })
   }))
 
+  const myProfileUpdate = (values) => (new Promise((resolve, reject) => {
+    console.log('profileUpdate>>>>>>>>', values)
+    axios({
+      method: 'PUT',
+      url: '/api/my/profile',
+      data: values,
+      withCredentials: true
+    }).then((resp) => {
+      resolve(resp)
+      mutate(resp.data)
+    }).catch((err) => {
+      reject(err)
+    })
+  }))
+
   return {
     currentUser: data?.currentUser || null,
     isLoading: !error && !data,
@@ -56,6 +73,7 @@ export default function useUser() {
     errorMessage: error?.response?.data?.message,
     authSignUp,
     authLogin,
-    authLogout
+    authLogout,
+    myProfileUpdate
   }
 }

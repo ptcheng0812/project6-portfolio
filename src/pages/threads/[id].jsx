@@ -1,9 +1,11 @@
+import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import useThread from '@/_hooks/thread'
 import useUser from '@/_hooks/user'
 import useFavourites from '@/_hooks/favourites'
+import usePublicUsers from '@/_hooks/publicUsers'
 
 import CompsLayout from '@/components/layouts/Layout'
 import CompsModalsThreadsUpdate from '@/components/modals/threads/update'
@@ -19,6 +21,7 @@ export default function PagesThreadShow() {
 
   const { thread, postsIds, updateThread, destroyThread, createPost, updatePost, destroyPost } = useThread(id)
   const { currentUser } = useUser()
+  const { users } = usePublicUsers()
   const { favourites, createFavourite, destroyFavourite } = useFavourites()
   const myFavouritesPostsIds = favourites?.map((favourite) => favourite.PostId)
 
@@ -27,6 +30,7 @@ export default function PagesThreadShow() {
   console.log('>>>>>>>>>>currentUser', currentUser)
   console.log('>>>>>>>>>>favourites', favourites)
   console.log('>>>>>>>>>>>myFavouritesPostsIds', myFavouritesPostsIds)
+  console.log('>>>>>>>>>>>>All the Users', users)
 
   return (
     <CompsLayout>
@@ -57,6 +61,12 @@ export default function PagesThreadShow() {
           thread?.Posts?.map((post) => (
             <>
               <div key={post.id}>
+                <div>
+                  {
+                    users?.find(({ id }) => id === post.UserId)?.name
+                  }
+                  <Link href={`/users/${users?.find(({ id }) => id === post.UserId)?.id}`}>View User Profile</Link>
+                </div>
                 <a>{post?.content}</a>
               </div>
               {post?.UserId === currentUser?.id
