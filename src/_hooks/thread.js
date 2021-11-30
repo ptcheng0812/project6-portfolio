@@ -6,15 +6,15 @@ import produce from 'immer'
 
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
-export default function useThread(id) {
+export default function useThread(threadId) {
   const router = useRouter()
-  const { data, error, mutate } = useSWR(`/api/threads/${id}`, fetcher)
+  const { data, error, mutate } = useSWR(`/api/threads/${threadId}`, fetcher)
   const [postsIds, setPostsIds] = useState([])
 
   const updateThread = (values) => (new Promise((resolve, reject) => {
     axios({
       method: 'PUT',
-      url: `/api/threads/${id}`,
+      url: `/api/threads/${threadId}`,
       data: values,
       withCredentials: true
     }).then((resp) => {
@@ -28,10 +28,9 @@ export default function useThread(id) {
   const destroyThread = () => {
     axios({
       method: 'DELETE',
-      url: `/api/threads/${id}`,
+      url: `/api/threads/${threadId}`,
       withCredentials: true
-    }).then((resp) => {
-      console.log('>>>>>>>resp', resp)
+    }).then(() => {
       router.push('/categories')
     })
   }
@@ -39,7 +38,7 @@ export default function useThread(id) {
   const createPost = (values) => (new Promise((resolve, reject) => {
     axios({
       method: 'POST',
-      url: `/api/threads/${id}/posts`,
+      url: `/api/threads/${threadId}/posts`,
       data: values
     }).then((resp) => {
       resolve()
@@ -57,7 +56,7 @@ export default function useThread(id) {
     }))
     axios({
       method: 'PUT',
-      url: `/api/threads/${id}/posts/${values.id}`,
+      url: `/api/threads/${threadId}/posts/${values.id}`,
       data: values
     }).then((resp) => {
       resolve()
@@ -81,7 +80,7 @@ export default function useThread(id) {
     }))
     axios({
       method: 'DELETE',
-      url: `/api/threads/${id}/posts/${values.id}`
+      url: `/api/threads/${threadId}/posts/${values.id}`
     }).then(() => {
       resolve()
       mutate(produce(data, (draft) => {

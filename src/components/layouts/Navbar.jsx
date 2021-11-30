@@ -45,8 +45,11 @@ export default function CompsLayoutsNavbar() {
                       type="button"
                       onClick={() => authLogout()}
                     >Logout</button>
-                    <a href="/my/profile">Profile</a>
-                    <a href="/my/notifications">My Notificaations</a>
+                    <Link href="/my/profile">Profile</Link>
+                    <Link href="/my/threads">My Threads</Link>
+                    <Link href="/my/posts">My Posts</Link>
+                    <Link href="/my/notifications">My Notificaations</Link>
+                    <Link href="/my/favourites">My Favourites</Link>
                   </>
                 )}
             </Nav>

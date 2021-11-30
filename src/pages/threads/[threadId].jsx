@@ -17,9 +17,9 @@ export default function PagesThreadShow() {
   const [openPostsCreate, setOpenPostsCreate] = useState(false)
   const [openPostsUpdate, setOpenPostsUpdate] = useState(false)
   const [selectedPost, setSelectedPost] = useState({})
-  const { query: { id } } = useRouter()
+  const { query: { threadId } } = useRouter()
 
-  const { thread, postsIds, updateThread, destroyThread, createPost, updatePost, destroyPost } = useThread(id)
+  const { thread, postsIds, updateThread, destroyThread, createPost, updatePost, destroyPost } = useThread(threadId)
   const { currentUser } = useUser()
   const { users } = usePublicUsers()
   const { favourites, createFavourite, destroyFavourite } = useFavourites()
@@ -71,7 +71,7 @@ export default function PagesThreadShow() {
               </div>
               {post?.UserId === currentUser?.id
                 && (
-                <div className="container d-flex justify-content-around">
+                <div className="btn-container d-flex justify-content-around">
                   <button
                     className="btn btn-primary btn-sm"
                     type="button"

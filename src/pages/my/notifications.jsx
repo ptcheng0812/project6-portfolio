@@ -20,17 +20,21 @@ export default function PagesMyNotifications() {
         <h1>My Notifications</h1>
         {
           myNotifications?.map((notification) => (
-            <div key={notification.id}>
-              {users?.find(({ id }) => id === notification.UserId)?.name}
-              <Link href={`/users/${users?.find(({ id }) => id === notification.UserId)?.id}`}>View User Profile</Link>
-              <a>{notification.message}</a>
-              <button
-                className="btn btn-danger btn-sm"
-                type="button"
-                onClick={() => {
-                  destroyNotification(notification)
-                }}
-              >Viewed and Delete</button>
+            <div key={notification.id} className="card col-sm-1 col-md-4 col-lg-6">
+              <div className="card-body">
+                <div className="card-title">
+                  {users?.find(({ id }) => id === notification.UserId)?.name}
+                  <Link href={`/users/${users?.find(({ id }) => id === notification.UserId)?.id}`}>View User Profile</Link>
+                </div>
+                <div className="card-text">{notification.message}</div>
+                <button
+                  className="btn btn-danger btn-sm"
+                  type="button"
+                  onClick={() => {
+                    destroyNotification(notification)
+                  }}
+                >Viewed and Delete</button>
+              </div>
             </div>
           ))
         }
