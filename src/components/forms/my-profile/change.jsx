@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 // import * as Yup from 'yup'
 
-const RenderForm = ({ errors, handleSubmit, isSubmitting }) => (
+const RenderForm = ({ errors, handleSubmit, isSubmitting, setFieldValue }) => (
   <Form onSubmit={handleSubmit}>
     <div className="form-group">
       <label htmlFor="name" className="form-label">Name</label>
@@ -60,13 +60,22 @@ const RenderForm = ({ errors, handleSubmit, isSubmitting }) => (
 
     <div className="form-group">
       <label htmlFor="avatar" className="form-label">Avatar</label>
-      <Field
+      {/* <Field
         id="avatar"
         name="avatar"
         type="text"
         className={`form-control ${errors.name && 'is-invalid'}`}
       />
-      <ErrorMessage component="div" name="avatar" className="invalid-feedback" />
+      <ErrorMessage component="div" name="avatar" className="invalid-feedback" /> */}
+      <input
+        id="avatar"
+        name="avatar"
+        type="file"
+        onChange={(e) => {
+          setFieldValue('avatar', e.currentTarget.files[0])
+        }}
+        className="form-control"
+      />
     </div>
 
     <div className="text-end">

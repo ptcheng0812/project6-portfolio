@@ -20,7 +20,7 @@ function PagesMyProfile() {
         <h2>{currentUser?.lastName}</h2>
         <h2>{currentUser?.dateOfBirth}</h2>
         <h2>{currentUser?.introduction}</h2>
-        <h2>{currentUser?.avatar}</h2>
+        <img src={currentUser?.avatar} alt="avatar" />
         <button
           className="btn btn-info btn-sm"
           type="button"
@@ -35,6 +35,7 @@ function PagesMyProfile() {
         initialValues={currentUser}
         handleClose={() => setOpenMyProfileEdit(false)}
         handleSubmit={(values) => {
+          console.log('>>>>>>>>values', values)
           myProfileUpdate(values).then(() => {
             setOpenMyProfileEdit(false)
           })
