@@ -9,6 +9,9 @@
     "gen-models": "sequelize-auto -o './src/db/schema' -d project_4_touch_development -h localhost -p 5432 -e postgres --cf l --sg true -x '12345678' -u postgres"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.2",
     "aws-sdk": "^2.1039.0",
     "axios": "^0.24.0",
     "babel-plugin-superjson-next": "^0.4.2",
