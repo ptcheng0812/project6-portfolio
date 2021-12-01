@@ -55,7 +55,7 @@ function PagesMyProfile() {
               onClick={() => {
                 setOpenMyProfileEdit(true)
               }}
-            >Edit Your Profile</Button>
+            ><i className="fas fa-edit" />  Edit Your Profile</Button>
           </Grid>
           <Grid item xs={4} spacing={2} className="in-pages-nav border rounded">
             <CardContent className="d-flex flex-column">

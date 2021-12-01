@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent'
 
 import CompsLayout from '@/components/layouts/Layout'
 import CompsModalsThreadsUpdate from '@/components/modals/threads/update'
+import CompsModalsMyThreadsDelete from '@/components/modals/my-threads/delete'
 
 import useUser from '@/_hooks/user'
 import useMyThreads from '@/_hooks/myThreads'
@@ -26,6 +27,7 @@ const ColoredLine = ({ color }) => (
 export default function PagesMyThreads() {
   const [openMyThreadsUpdate, setOpenMyThreadsUpdate] = useState(false)
   const [selectedMyThread, setSelectedMyThread] = useState({})
+  const [openMyThreadsDelete, setOpenMyThreadsDelete] = useState(false)
 
   const { currentUser } = useUser()
   const { myThreads } = useMyThreads()
@@ -82,15 +84,16 @@ export default function PagesMyThreads() {
                           setSelectedMyThread(myThread)
                           setOpenMyThreadsUpdate(true)
                         }}
-                      >Edit My Thread</button>
+                      ><i className="fas fa-pen" />  Edit My Thread</button>
                       <button
                         className="btn btn-danger btn-sm"
                         type="button"
                         onClick={() => {
                           setSelectedMyThread(myThread)
-                          destroyThread(myThread)
+                          // destroyThread(myThread)
+                          setOpenMyThreadsDelete(true)
                         }}
-                      >Delete My Thread</button>
+                      ><i className="fas fa-trash-alt" />  Delete My Thread</button>
                     </div>
                   </div>
                 </div>
@@ -103,6 +106,15 @@ export default function PagesMyThreads() {
                   updateThread(values).then(() => {
                     setOpenMyThreadsUpdate(false)
                   })
+                }}
+              />
+
+              <CompsModalsMyThreadsDelete
+                show={openMyThreadsDelete}
+                handleClose={() => setOpenMyThreadsDelete(false)}
+                handleDelete={() => {
+                  destroyThread(selectedMyThread)
+                  setOpenMyThreadsDelete(false)
                 }}
               />
             </>

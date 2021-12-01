@@ -73,7 +73,7 @@ export default function PagesMyNotifications() {
                   onClick={() => {
                     destroyNotification(notification)
                   }}
-                >Viewed and Delete</button>
+                ><i className="fas fa-trash-alt" />  Viewed and Delete</button>
               </div>
             </div>
           ))

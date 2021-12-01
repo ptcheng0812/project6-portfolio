@@ -25,7 +25,7 @@ const ColoredLine = ({ color }) => (
 export default function PagesMyFavourites() {
   const { currentUser } = useUser()
   const { users } = usePublicUsers()
-  const { favourites } = useFavourites()
+  const { favourites, destroyFavourite } = useFavourites()
   const { posts } = usePosts()
 
   console.log('>>>>>>>currentUser', currentUser)
@@ -79,7 +79,16 @@ export default function PagesMyFavourites() {
                             </div>
                             <ColoredLine color="black" />
                             <div className="card-text d-flex flex-column">
-                              <Link href={`/threads/${posts?.find(({ id }) => id === favourite?.PostId)?.ThreadId}`}>View Parent Thread</Link>
+                              <i className="fas fa-directions">
+                                <Link href={`/threads/${posts?.find(({ id }) => id === favourite?.PostId)?.ThreadId}`}>View Parent Thread</Link></i>
+                              <button
+                                id="remove-favourites-btn"
+                                className="btn btn-danger btn-sm"
+                                type="button"
+                                onClick={() => {
+                                  destroyFavourite(posts?.find(({ id }) => id === favourite?.PostId))
+                                }}
+                              ><i className="fas fa-eraser" />  Remove From Favourite</button>
                             </div>
                           </div>
                         </div>

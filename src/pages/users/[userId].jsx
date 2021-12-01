@@ -48,7 +48,7 @@ function PagesPublicUser() {
                   onClick={() => {
                     setOpenNotificationsCreate(true)
                   }}
-                >Message</Button>
+                ><i className="fas fa-inbox" />  Message</Button>
               </div>
             </div>
           </Grid>

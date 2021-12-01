@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent'
 
 import CompsLayout from '@/components/layouts/Layout'
 import CompsModalsPostsUpdate from '@/components/modals/posts/update'
+import CompsModalsMyPostsDelete from '@/components/modals/my-posts/delete'
 
 import useUser from '@/_hooks/user'
 import useMyPosts from '@/_hooks/myPosts'
@@ -26,6 +27,7 @@ const ColoredLine = ({ color }) => (
 
 export default function PagesMyPosts() {
   const [openMyPostsUpdate, setOpenMyPostsUpdate] = useState(false)
+  const [openMyPostsDelete, setOpenMyPostsDelete] = useState(false)
   const [selectedMyPost, setSelectedMyPost] = useState({})
 
   const { currentUser } = useUser()
@@ -87,15 +89,16 @@ export default function PagesMyPosts() {
                           setSelectedMyPost(myPost)
                           setOpenMyPostsUpdate(true)
                         }}
-                      >Edit My Post</button>
+                      ><i className="fas fa-pen" />  Edit My Post</button>
                       <button
                         className="btn btn-danger btn-sm"
                         type="button"
                         onClick={() => {
                           setSelectedMyPost(myPost)
-                          destroyPost(selectedMyPost)
+                          // destroyPost(selectedMyPost)
+                          setOpenMyPostsDelete(true)
                         }}
-                      >Delete My Post</button>
+                      ><i className="fas fa-trash-alt" />  Delete My Post</button>
                     </div>
                   </div>
                 </div>
@@ -108,6 +111,16 @@ export default function PagesMyPosts() {
                 handleSubmit={(values) => {
                   updatePost(values).then(() => {
                     setOpenMyPostsUpdate(false)
+                  })
+                }}
+              />
+
+              <CompsModalsMyPostsDelete
+                show={openMyPostsDelete}
+                handleClose={() => setOpenMyPostsDelete(false)}
+                handleDelete={() => {
+                  destroyPost(selectedMyPost).then(() => {
+                    setOpenMyPostsDelete(false)
                   })
                 }}
               />
