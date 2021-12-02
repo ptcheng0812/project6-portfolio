@@ -3,8 +3,8 @@ import axios from 'axios'
 
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
-export default function useThreads() {
-  const { data, error, mutate } = useSWR('/api/threads', fetcher)
+export default function useThreads(page, category) {
+  const { data, error, mutate } = useSWR(`/api/threads?page=${page}&category=${category}`, fetcher)
 
   const createThread = (values) => (new Promise((resolve, reject) => {
     axios({
@@ -21,7 +21,7 @@ export default function useThreads() {
   }))
 
   return {
-    // meta: data?.meta,
+    meta: data?.meta,
     threads: data?.threads || [],
     isLoading: !error && !data,
     isError: error,

@@ -28,14 +28,16 @@ export default function PagesMyThreads() {
   const [openMyThreadsUpdate, setOpenMyThreadsUpdate] = useState(false)
   const [selectedMyThread, setSelectedMyThread] = useState({})
   const [openMyThreadsDelete, setOpenMyThreadsDelete] = useState(false)
+  const [page, setPage] = useState(1)
 
   const { currentUser } = useUser()
-  const { myThreads } = useMyThreads()
+  const { myThreads } = useMyThreads(page)
   const { updateThread, destroyThread } = useThread(selectedMyThread.id)
 
   console.log('>>>>>>>currentUser', currentUser)
   console.log('>>>>>>>myThreads', myThreads)
   console.log('>>>>>>>selectedMyThread', selectedMyThread)
+  console.log('>>>>>>page', page)
 
   return (
     <CompsLayout>
@@ -123,6 +125,15 @@ export default function PagesMyThreads() {
             </div>
           </Grid>
         </Grid>
+        <div id="page-my-threads-pagination-btn" className="d-flex justify-content-around">
+          {
+            page > 1 && <button type="button" className="btn btn-info btn-spacing" onClick={() => setPage(page - 1)}>Previous</button>
+          }
+
+          {
+            true && <button type="button" className="btn btn-info" onClick={() => setPage(page + 1)}>Next</button>
+          }
+        </div>
 
       </div>
 

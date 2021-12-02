@@ -3,14 +3,14 @@ import axios from 'axios'
 
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
-export default function useMyThreads(page) {
+export default function useAllThreads() {
   const { mutate } = useSWRConfig()
-  const { data } = useSWR(`/api/my/threads?page=${page}`, fetcher)
+  const { data } = useSWR('/api/my/allThreads', fetcher)
 
-  mutate('/api/my/threads')
+  mutate('/api/my/allThreads')
 
   return {
     meta: data?.meta,
-    myThreads: data?.myThreads
+    threads: data?.threads
   }
 }

@@ -12,7 +12,8 @@ import CompsModalsMyPostsDelete from '@/components/modals/my-posts/delete'
 import useUser from '@/_hooks/user'
 import useMyPosts from '@/_hooks/myPosts'
 import useThread from '@/_hooks/thread'
-import useThreads from '@/_hooks/threads'
+// import useThreads from '@/_hooks/threads'
+import useAllThreads from '@/_hooks/allThreads'
 
 const ColoredLine = ({ color }) => (
   <hr
@@ -32,7 +33,7 @@ export default function PagesMyPosts() {
 
   const { currentUser } = useUser()
   const { myPosts } = useMyPosts()
-  const { threads } = useThreads()
+  const { threads } = useAllThreads()
   const threadsIds = threads?.map((thread) => thread.id)
   const { updatePost, destroyPost } = useThread(selectedMyPost.ThreadId)
 
@@ -71,7 +72,7 @@ export default function PagesMyPosts() {
               {
           myPosts?.map((myPost) => (
 
-            threadsIds.includes(myPost.ThreadId) && (
+            threadsIds?.includes(myPost.ThreadId) && (
             <>
               <div key={myPost.id} className="card" id="pages-my-posts-grid-inside-card">
                 <div className="card-body">

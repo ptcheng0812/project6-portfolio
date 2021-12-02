@@ -7,8 +7,17 @@ import CompsModalsThreadsCreate from '@/components/modals/threads/create'
 
 export default function PagesCategoriesPTSD() {
   const [openThreadsCreate, setThreadsCreate] = useState(false)
+  const [page, setPage] = useState(1)
+  const category = 'PTSD'
 
-  const { threads, createThread } = useThreads()
+  const { threads, createThread, meta } = useThreads(page, category)
+
+  const arrayTotalPages = Array.from({ length: meta?.totalPages }, (_, i) => i + 1)
+
+  console.log(threads)
+  console.log('>>>>>>meta', meta)
+  console.log('>>>>>>page', page)
+  console.log('>>>>>>>', arrayTotalPages)
 
   return (
     <CompsLayout>
@@ -38,6 +47,20 @@ export default function PagesCategoriesPTSD() {
           ))
         }
       </main>
+
+      <div id="page-btn" className="d-flex justify-content-around">
+        {
+            page > 1 && <button type="button" className="btn btn-info btn-spacing" onClick={() => setPage(page - 1)}>Previous</button>
+          }
+        {
+            arrayTotalPages?.map((index) => (
+              <button type="button" className="btn btn-info" onClick={() => setPage(index)}> {index} </button>
+            ))
+        }
+        {
+            true && arrayTotalPages.includes(page) && <button type="button" className="btn btn-info" onClick={() => setPage(page + 1)}>Next</button>
+          }
+      </div>
 
       <CompsModalsThreadsCreate
         show={openThreadsCreate}

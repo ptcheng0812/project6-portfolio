@@ -9,6 +9,7 @@ import CompsLayout from '@/components/layouts/Layout'
 import useUser from '@/_hooks/user'
 import usePublicUsers from '@/_hooks/publicUsers'
 import useFavourites from '@/_hooks/favourites'
+import useThreads from '@/_hooks/threads'
 import usePosts from '@/_hooks/posts'
 
 const ColoredLine = ({ color }) => (
@@ -25,13 +26,17 @@ const ColoredLine = ({ color }) => (
 export default function PagesMyFavourites() {
   const { currentUser } = useUser()
   const { users } = usePublicUsers()
+  const { threads } = useThreads()
   const { favourites, destroyFavourite } = useFavourites()
   const { posts } = usePosts()
+  const threadsIds = threads?.map((thread) => thread.id)
 
   console.log('>>>>>>>currentUser', currentUser)
   console.log('>>>>>>>>users', users)
   console.log('>>>>>>>favourites', favourites)
   console.log('>>>>>>>posts', posts)
+  console.log('>>>>>>>threads', threads)
+  console.log('>>>>>>>threadsIds', threadsIds)
 
   return (
     <CompsLayout>
@@ -63,7 +68,8 @@ export default function PagesMyFavourites() {
                 favourites?.map((favourite) => (
                   <div>
                     {
-                      posts?.find(({ id }) => id === favourite?.PostId) && (
+                      threadsIds?.includes(posts?.find(({ id }) => id === favourite?.PostId)?.ThreadId)
+                      && posts?.find(({ id }) => id === favourite?.PostId) && (
                         <div key={favourite.id} className="card d-flex flex-column" id="pages-my-favourites-grid-card">
                           <div className="card-body">
                             <div className="d-flex justify-content-start align-items-center" id="pages-my-favourites-grid-card-head">
