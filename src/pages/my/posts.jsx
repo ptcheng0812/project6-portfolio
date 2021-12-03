@@ -30,9 +30,10 @@ export default function PagesMyPosts() {
   const [openMyPostsUpdate, setOpenMyPostsUpdate] = useState(false)
   const [openMyPostsDelete, setOpenMyPostsDelete] = useState(false)
   const [selectedMyPost, setSelectedMyPost] = useState({})
+  const [page, setPage] = useState(1)
 
   const { currentUser } = useUser()
-  const { myPosts } = useMyPosts()
+  const { myPosts } = useMyPosts(page)
   const { threads } = useAllThreads()
   const threadsIds = threads?.map((thread) => thread.id)
   const { updatePost, destroyPost } = useThread(selectedMyPost.ThreadId)
@@ -42,6 +43,7 @@ export default function PagesMyPosts() {
   console.log('>>>>>>selectedMyPost', selectedMyPost)
   console.log('>>>>>>>All the threads', threads)
   console.log('>>>>>>>>threadsIds', threadsIds)
+  console.log('>>>>>>page', page)
 
   return (
     <CompsLayout>
@@ -133,6 +135,15 @@ export default function PagesMyPosts() {
             </div>
           </Grid>
         </Grid>
+        <div id="page-my-posts-pagination-btn" className="d-flex justify-content-around">
+          {
+            page > 1 && <button type="button" className="btn btn-info btn-spacing" id="page-my-posts-pagination-btn-btn" onClick={() => setPage(page - 1)}>Previous</button>
+          }
+
+          {
+            true && <button type="button" className="btn btn-info" id="page-my-posts-pagination-btn-btn" onClick={() => setPage(page + 1)}>Load More</button>
+          }
+        </div>
       </div>
 
     </CompsLayout>

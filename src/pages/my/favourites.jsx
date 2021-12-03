@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
@@ -9,7 +10,8 @@ import CompsLayout from '@/components/layouts/Layout'
 import useUser from '@/_hooks/user'
 import usePublicUsers from '@/_hooks/publicUsers'
 import useFavourites from '@/_hooks/favourites'
-import useThreads from '@/_hooks/threads'
+import useMyFavourites from '@/_hooks/myFavourites'
+import useAllThreads from '@/_hooks/allThreads'
 import usePosts from '@/_hooks/posts'
 
 const ColoredLine = ({ color }) => (
@@ -24,10 +26,13 @@ const ColoredLine = ({ color }) => (
 )
 
 export default function PagesMyFavourites() {
+  const [page, setPage] = useState(1)
+
   const { currentUser } = useUser()
   const { users } = usePublicUsers()
-  const { threads } = useThreads()
-  const { favourites, destroyFavourite } = useFavourites()
+  const { threads } = useAllThreads()
+  const { destroyFavourite } = useFavourites()
+  const { favourites } = useMyFavourites(page)
   const { posts } = usePosts()
   const threadsIds = threads?.map((thread) => thread.id)
 
@@ -106,6 +111,15 @@ export default function PagesMyFavourites() {
             </div>
           </Grid>
         </Grid>
+        <div id="page-my-favourites-pagination-btn" className="d-flex justify-content-around">
+          {
+            page > 1 && <button type="button" className="btn btn-info btn-spacing" id="page-my-favourites-pagination-btn-btn" onClick={() => setPage(page - 1)}>Previous</button>
+          }
+
+          {
+            true && <button type="button" className="btn btn-info" id="page-my-favourites-pagination-btn-btn" onClick={() => setPage(page + 1)}>Load More</button>
+          }
+        </div>
       </div>
     </CompsLayout>
   )

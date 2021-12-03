@@ -45,6 +45,7 @@ function PagesPublicUser() {
                 <Button
                   className="btn btn-primary btn-sm"
                   type="button"
+                  id="pages-user-message-btn-btn"
                   onClick={() => {
                     setOpenNotificationsCreate(true)
                   }}
