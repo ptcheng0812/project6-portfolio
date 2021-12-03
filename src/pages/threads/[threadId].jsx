@@ -29,6 +29,7 @@ export default function PagesThreadShow() {
   const [openPostsCreate, setOpenPostsCreate] = useState(false)
   const [openPostsUpdate, setOpenPostsUpdate] = useState(false)
   const [selectedPost, setSelectedPost] = useState({})
+  const [page, setPage] = useState(1)
   const { query: { threadId } } = useRouter()
 
   const { thread, postsIds, updateThread, destroyThread, createPost, updatePost, destroyPost } = useThread(threadId)
@@ -36,6 +37,9 @@ export default function PagesThreadShow() {
   const { users } = usePublicUsers()
   const { favourites, createFavourite, destroyFavourite } = useFavourites()
   const myFavouritesPostsIds = favourites?.map((favourite) => favourite.PostId)
+  const pageOffset = page * 5
+  // const pageLimitInArray = Array.from({ length: pageOffset }, (_, i) => i + 1)
+  const filteredThreadPosts = thread?.Posts?.slice(0, pageOffset)
 
   console.log('>>>>>>>>>thread', thread)
   console.log('>>>>>>>>thread.Posts>', thread?.Posts)
@@ -43,6 +47,10 @@ export default function PagesThreadShow() {
   console.log('>>>>>>>>>>favourites', favourites)
   console.log('>>>>>>>>>>>myFavouritesPostsIds', myFavouritesPostsIds)
   console.log('>>>>>>>>>>>>All the Users', users)
+  console.log('>>>>>>>>>>>>page', page)
+  console.log('>>>>>>>>>>>>pageOffset', pageOffset)
+  console.log('>>>>>>>>>>>>filteredThreadPosts', filteredThreadPosts)
+  // console.log('>>>>>>>>>>>>pageLimitInArray', pageLimitInArray)
 
   return (
     <CompsLayout>
@@ -81,7 +89,7 @@ export default function PagesThreadShow() {
       <main id="thread-main-group" className="thread-main-group d-flex justify-content-center">
         <div className="d-flex flex-column">
           {
-          thread?.Posts?.map((post) => (
+          filteredThreadPosts?.map((post) => (
             <div className="card" id="pages-threads-show-posts-card">
               <div className="card-body">
                 <div key={post.id} className="card-title">
@@ -143,6 +151,16 @@ export default function PagesThreadShow() {
         }
         </div>
       </main>
+
+      <div id="page-my-favourites-pagination-btn" className="d-flex justify-content-around">
+        {
+            page > 1 && <button type="button" className="btn btn-info btn-spacing" id="page-my-favourites-pagination-btn-btn" onClick={() => setPage(page - 1)}>Roll Back</button>
+          }
+
+        {
+            true && <button type="button" className="btn btn-info" id="page-my-favourites-pagination-btn-btn" onClick={() => setPage(page + 1)}>Load More</button>
+          }
+      </div>
 
       <CompsModalsThreadsUpdate
         show={openThreadsUpdate}
