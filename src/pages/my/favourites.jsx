@@ -75,7 +75,7 @@ export default function PagesMyFavourites() {
                     {
                       threadsIds?.includes(posts?.find(({ id }) => id === favourite?.PostId)?.ThreadId)
                       && posts?.find(({ id }) => id === favourite?.PostId) && (
-                        <div key={favourite.id} className="card d-flex flex-column" id="pages-my-favourites-grid-card">
+                        <div key={favourite.id} className="card border-2 d-flex flex-column" id="pages-my-favourites-grid-card">
                           <div className="card-body">
                             <div className="d-flex justify-content-start align-items-center" id="pages-my-favourites-grid-card-head">
                               <Avatar src={users?.find(({ id }) => id === (posts?.find(({ id }) => id === favourite?.PostId)?.UserId))?.avatar} alt="avatar" sx={{ width: 50, height: 50 }} />

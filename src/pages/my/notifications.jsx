@@ -58,7 +58,7 @@ export default function PagesMyNotifications() {
             <div className="d-flex flex-column" id="pages-my-notifications-grid-inside">
               {
           myNotifications?.map((notification) => (
-            <div key={notification.id} className="card" id="pages-my-notifications-grid-card">
+            <div key={notification.id} className="card border-2" id="pages-my-notifications-grid-card">
               <div className="card-body">
                 <div className="card-title d-flex justify-content-start align-items-center">
                   <Avatar src={users?.find(({ id }) => id === notification.UserId)?.avatar} alt="avatar" sx={{ width: 50, height: 50 }} />

@@ -76,7 +76,7 @@ export default function PagesMyPosts() {
 
             threadsIds?.includes(myPost.ThreadId) && (
             <>
-              <div key={myPost.id} className="card" id="pages-my-posts-grid-inside-card">
+              <div key={myPost.id} className="card border-2" id="pages-my-posts-grid-inside-card">
                 <div className="card-body">
                   <div className="card-title" id="pages-my-posts-grid-inside-card-card-title">
                     {myPost.content}

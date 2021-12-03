@@ -68,7 +68,7 @@ export default function PagesMyThreads() {
               {
           myThreads?.map((myThread) => (
             <>
-              <div key={myThread.id} className="card  rounded border" id="pages-my-thread-grid-inside-card">
+              <div key={myThread.id} className="card rounded border-2" id="pages-my-thread-grid-inside-card">
                 <div className="card-body">
                   <div className="card-title" id="pages-my-thread-grid-inside-card-card-title">
                     {myThread.title}
