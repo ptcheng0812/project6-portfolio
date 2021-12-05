@@ -91,7 +91,7 @@ const RenderForm = ({ errors, touched, handleSubmit, isSubmitting }) => (
       <ErrorMessage component="div" name="introduction" className="invalid-feedback" />
     </div>
 
-    <div className="form-group">
+    {/* <div className="form-group">
       <label htmlFor="avatar" className="form-label">Avatar</label>
       <Field
         id="avatar"
@@ -100,7 +100,7 @@ const RenderForm = ({ errors, touched, handleSubmit, isSubmitting }) => (
         className={`form-control ${errors.name && 'is-invalid'}`}
       />
       <ErrorMessage component="div" name="avatar" className="invalid-feedback" />
-    </div>
+    </div> */}
 
     <div className="text-end">
       <button

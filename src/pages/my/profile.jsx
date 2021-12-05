@@ -32,7 +32,7 @@ function PagesMyProfile() {
   return (
     <CompsLayout>
       <div id="pages-private" className="d-flex flex-column">
-        <h1>Private Page</h1>
+        <h1>Profile</h1>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} id="page-my-profile-main-grid">
           <Grid item xs={4} id="pages-my-profile-avatar-grid" className="d-flex justify-content-center border rounded">
             <Avatar src={currentUser?.avatar} alt="avatar" sx={{ width: 200, height: 200 }} id="pages-my-profile-avatar" />

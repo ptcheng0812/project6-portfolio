@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Link from 'next/link'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
@@ -55,9 +54,10 @@ export default function PagesCategoriesDepression() {
                     </ListItemAvatar>
                     <ListItemText className="d-flex flex-column">
                       <p>{thread.title}</p>
-                      <Link href={`/threads/${thread.id}`} passHref>
+                      <span><i className="far fa-comment-alt" />  {thread?.Posts?.length}</span>
+                      <a href={`/threads/${thread.id}`} id="pages-threads-show-posts-card-card-link">
                         View Posts
-                      </Link>
+                      </a>
                     </ListItemText>
                   </ListItem>
                 </div>
@@ -69,15 +69,15 @@ export default function PagesCategoriesDepression() {
 
       <div id="pages-categories-page-btn" className="d-flex justify-content-around">
         {
-            page > 1 && <button type="button" className="btn btn-info btn-sm btn-spacing" onClick={() => setPage(page - 1)}>Previous</button>
+            page > 1 && <button type="button" id="pages-categories-page-btn-btn" className="btn btn-info btn-sm btn-spacing" onClick={() => setPage(page - 1)}>Previous</button>
           }
         {
             arrayTotalPages?.map((index) => (
-              <button type="button" className="btn btn-info btn-sm" onClick={() => setPage(index)}> {index} </button>
+              <button type="button" id="pages-categories-page-btn-btn" className="btn btn-info btn-sm" onClick={() => setPage(index)}> {index} </button>
             ))
         }
         {
-            true && arrayTotalPages.includes(page) && <button type="button" className="btn btn-info btn-sm" onClick={() => setPage(page + 1)}>Next</button>
+            true && arrayTotalPages.includes(page) && <button type="button" id="pages-categories-page-btn-btn" className="btn btn-info btn-sm" onClick={() => setPage(page + 1)}>Next</button>
           }
       </div>
 

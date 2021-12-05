@@ -46,7 +46,7 @@ export default function PagesMyFavourites() {
   return (
     <CompsLayout>
       <div id="pages-my-favourites" className="text-center">
-        <h1>My Favourites</h1>
+
         <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} id="pages-my-favourites-main-grid">
           <Grid item xs={4} id="pages-my-favourites-avatar-grid">
             <div className="border rounded d-flex justify-content-center" id="pages-my-favourites-avatar-grid-wrap">
@@ -69,6 +69,7 @@ export default function PagesMyFavourites() {
           </Grid>
           <Grid item xs={8} id="pages-my-favourites-grid" className="d-flex justify-content-center">
             <div className="d-flex flex-column " id="pages-my-favourites-grid-inside">
+              <h1>My Favourites</h1>
               {
                 favourites?.map((favourite) => (
                   <div>

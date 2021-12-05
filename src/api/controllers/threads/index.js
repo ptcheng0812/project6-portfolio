@@ -23,6 +23,7 @@ const threadsIndex = async (req, res) => {
         [Op.iLike]: `%${category}%`
       }
     },
+    include: Thread.Posts,
     offset,
     limit,
     order: [[sortField, sortOrder]]

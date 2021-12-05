@@ -33,7 +33,7 @@ export default function PagesMyNotifications() {
   return (
     <CompsLayout>
       <div id="pages-my-notifications" className="text-center">
-        <h1>My Notifications</h1>
+
         <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} id="pages-my-notifications-main-grid">
           <Grid item xs={4} id="pages-my-notifications-avatar-grid">
             <div className="border rounded d-flex justify-content-center" id="pages-my-notifications-avatar-grid-wrap">
@@ -56,6 +56,7 @@ export default function PagesMyNotifications() {
           </Grid>
           <Grid item xs={8} id="pages-my-notifications-grid" className="d-flex justify-content-center">
             <div className="d-flex flex-column" id="pages-my-notifications-grid-inside">
+              <h1>My Notifications</h1>
               {
           myNotifications?.map((notification) => (
             <div key={notification.id} className="card border-2" id="pages-my-notifications-grid-card">
