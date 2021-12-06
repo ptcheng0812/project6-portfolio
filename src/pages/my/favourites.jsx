@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { useState } from 'react'
 import Link from 'next/link'
 import Typography from '@mui/material/Typography'
