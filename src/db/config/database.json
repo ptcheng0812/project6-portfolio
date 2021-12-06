@@ -9,6 +9,8 @@
   "production": {
     "protocol": "postgres",
     "dialect": "postgres",
+    "username": "postgres",
+    "password": "12345678",
     "dialectOptions": {
       "ssl": {
         "require": true,
