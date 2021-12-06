@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 
 import fetcher from '@/_services/fetcher'
+import getFormData from '@/_services/getFormData'
 
 export default function useUser() {
   const router = useRouter()
@@ -56,7 +57,7 @@ export default function useUser() {
     axios({
       method: 'PUT',
       url: '/api/my/profile',
-      data: values,
+      data: getFormData(values, 'user'),
       withCredentials: true
     }).then((resp) => {
       resolve(resp)

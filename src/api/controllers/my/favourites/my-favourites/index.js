@@ -1,8 +1,8 @@
 import nc from 'next-connect'
 
-import { Post } from '@/db/models'
+import { Favourite } from '@/db/models'
 
-const myPostsIndex = async (req, res) => {
+const myFavouritePageIndex = async (req, res) => {
   const { query } = req
   const { currentUser } = res
 
@@ -12,7 +12,7 @@ const myPostsIndex = async (req, res) => {
   const sortField = query.sortField || 'createdAt'
   const sortOrder = query.sortOrder || 'DESC'
 
-  const myPosts = await Post.findAll({
+  const favourites = await Favourite.findAll({
     where: {
       UserId: currentUser.id
     },
@@ -21,8 +21,8 @@ const myPostsIndex = async (req, res) => {
     order: [[sortField, sortOrder]]
   })
 
-  res.status(200).json({ myPosts })
+  res.status(200).json({ favourites })
 }
 
 export default nc()
-  .use(myPostsIndex)
+  .use(myFavouritePageIndex)

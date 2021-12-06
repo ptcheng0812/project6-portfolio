@@ -31,7 +31,7 @@ export default function useThread(threadId) {
       url: `/api/threads/${threadId}`,
       withCredentials: true
     }).then(() => {
-      router.push('/categories')
+      router.push('/my/threads')
     })
   }
 

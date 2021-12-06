@@ -6,7 +6,7 @@ export default function CompsModalsMyProfileUpdate({ show, initialValues, handle
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Edit Thread</Modal.Title>
+        <Modal.Title>Edit Profile</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <CompsFormsProfileEdit

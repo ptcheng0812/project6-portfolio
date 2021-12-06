@@ -17,11 +17,11 @@ export default function CompsLayoutsNavbar() {
   return (
     <>
       <Navbar id="comps-layouts-navbar" bg="light" expand="lg">
-        <Container>
+        <Container fluid>
           <Navbar.Brand as={Link} href="/"><a className="navbar-brand">Home</a></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="me-auto d-flex justify-content-between">
               {!currentUser
                 && (
                 <>
@@ -45,11 +45,12 @@ export default function CompsLayoutsNavbar() {
                       type="button"
                       onClick={() => authLogout()}
                     >Logout</button>
-                    <Link href="/my/profile">Profile</Link>
-                    <Link href="/my/threads">My Threads</Link>
-                    <Link href="/my/posts">My Posts</Link>
-                    <Link href="/my/notifications">My Notificaations</Link>
-                    <Link href="/my/favourites">My Favourites</Link>
+                    <Nav.Link href="/categories">Category</Nav.Link>
+                    <Nav.Link href="/my/profile">Profile</Nav.Link>
+                    <Nav.Link href="/my/threads">My Threads</Nav.Link>
+                    <Nav.Link href="/my/posts">My Posts</Nav.Link>
+                    <Nav.Link href="/my/notifications">My Notificaations</Nav.Link>
+                    <Nav.Link href="/my/favourites">My Favourites</Nav.Link>
                   </>
                 )}
             </Nav>
