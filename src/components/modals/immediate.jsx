@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 import Modal from 'react-bootstrap/Modal'
 
 export default function CompsModalsImmediateHelp({ show, handleClose }) {
@@ -7,11 +8,11 @@ export default function CompsModalsImmediateHelp({ show, handleClose }) {
         <Modal.Title />
       </Modal.Header>
       <Modal.Body>
-        <div className="d-flex flex-column">
+        <div>
           <div>If you are feeling extremely distressed or having suicidal thoughts: There are a number of helplines you can phone at any time to reach trained volunteers who want to help you to get the support you need.</div>
           <br></br>
           <br></br>
-          <table class="table table-hover">
+          <table className="table table-hover">
             <tbody>
               <tr>
                 <th scope="row"></th>
@@ -33,7 +34,7 @@ export default function CompsModalsImmediateHelp({ show, handleClose }) {
               </tr>
               <tr>
                 <th scope="row"></th>
-                <td >Ambulance Service</td>
+                <td>Ambulance Service</td>
                 <td>999</td>
                 <td>All languages</td>
               </tr>

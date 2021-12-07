@@ -1,10 +1,15 @@
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import CompsLayout from '@/components/layouts/Layout'
 
 export default function PagesCategoriesIndex() {
   return (
     <CompsLayout>
-      <div id="pages-categories-index">
+      <motion.div
+        id="pages-categories-index"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <div id="pages-categories-image-area">
           <div id="pages-categories-image-area-image" />
           <div className="d-flex align-items-center" id="pages-categories-image-area-text-area">
@@ -67,7 +72,7 @@ export default function PagesCategoriesIndex() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </CompsLayout>
   )
 }

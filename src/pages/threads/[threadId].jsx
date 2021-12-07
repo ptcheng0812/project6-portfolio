@@ -68,7 +68,7 @@ export default function PagesThreadShow() {
             <ColoredLine color="black" />
             <div className="d-flex justify-content-around" id="pages-threads-show-header-btn-group">
               <button
-                className="btn btn-outline-primary btn-sm"
+                className="btn btn-outline-primary btn-sm border-0"
                 id="pages-threads-show-header-edit-btn"
                 type="button"
                 onClick={() => setOpenThreadsUpdate(true)}
@@ -80,7 +80,7 @@ export default function PagesThreadShow() {
                 onClick={() => setOpenPostsCreate(true)}
               ><i className="fas fa-pen-square" />  New Post</button>
               <button
-                className="btn btn-outline-danger btn-sm"
+                className="btn btn-outline-danger btn-sm border-0"
                 id="pages-threads-show-header-delete-btn"
                 type="button"
                 onClick={() => destroyThread()}

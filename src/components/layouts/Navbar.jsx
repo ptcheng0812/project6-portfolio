@@ -28,13 +28,13 @@ export default function CompsLayoutsNavbar() {
                 && (
                 <>
                   <button
-                    id="nav-bar-signup-btn"
+                    id="nav-bar-signup-login-btn"
                     className="btn btn-success btn-sm"
                     type="button"
                     onClick={() => setAuthSignUp(true)}
                   >SignUp</button>
                   <button
-                    id="nav-bar-login-btn"
+                    id="nav-bar-signup-login-btn"
                     className="btn btn-success btn-sm"
                     type="button"
                     onClick={() => setAuthLogin(true)}
@@ -50,16 +50,11 @@ export default function CompsLayoutsNavbar() {
               {currentUser
                 && (
                   <>
-                    <button
-                      className="btn btn-danger btn-sm"
-                      type="button"
-                      onClick={() => authLogout()}
-                    >Logout</button>
                     <Nav.Link href="/categories">Category</Nav.Link>
                     <Nav.Link href="/my/profile">Profile</Nav.Link>
                     <Nav.Link href="/my/threads">My Threads</Nav.Link>
                     <Nav.Link href="/my/posts">My Posts</Nav.Link>
-                    <Nav.Link href="/my/notifications">My Notificaations</Nav.Link>
+                    <Nav.Link href="/my/notifications">My Notifications</Nav.Link>
                     <Nav.Link href="/my/favourites">My Favourites</Nav.Link>
                     <Nav.Link href="https://shielded-falls-80328.herokuapp.com/">Anonymous Chat</Nav.Link>
                     <a
@@ -68,6 +63,12 @@ export default function CompsLayoutsNavbar() {
                         setOpenImmediate(true)
                       }}
                     >Immediate Help</a>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      id="nav-bar-logout-btn"
+                      type="button"
+                      onClick={() => authLogout()}
+                    >Logout</button>
                   </>
                 )}
             </Nav>

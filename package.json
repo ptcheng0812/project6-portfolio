@@ -21,6 +21,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
     "formik": "^2.2.9",
+    "framer-motion": "^5.4.1",
     "immer": "^9.0.6",
     "lodash": "^4.17.21",
     "mdbreact": "^5.2.0",

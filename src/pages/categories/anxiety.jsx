@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
@@ -28,7 +29,12 @@ export default function PagesCategoriesDepression() {
 
   return (
     <CompsLayout>
-      <div id="pages-categories-header" className="card pages-categories-show text-center">
+      <motion.div
+        id="pages-categories-header"
+        className="card pages-categories-show text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <h1>Anxiety</h1>
         <div className="d-flex justify-content-center" id="pages-categories-header-btn-container">
           <button
@@ -38,7 +44,7 @@ export default function PagesCategoriesDepression() {
             onClick={() => setThreadsCreate(true)}
           >New Thread</button>
         </div>
-      </div>
+      </motion.div>
 
       <main id="threads-main-group" className="d-flex justify-content-center">
         <List id="threads-main-group" sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }}>
