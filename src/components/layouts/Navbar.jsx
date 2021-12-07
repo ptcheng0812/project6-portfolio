@@ -7,10 +7,12 @@ import Nav from 'react-bootstrap/Nav'
 import useUser from '@/_hooks/user'
 import CompsModalsAuthSignUp from '@/components/modals/auth/signup'
 import CompsModalsAuthLogin from '@/components/modals/auth/login'
+import CompsModalsImmediateHelp from '@/components/modals/immediate'
 
 export default function CompsLayoutsNavbar() {
   const [openAuthSignUp, setAuthSignUp] = useState(false)
   const [openAuthLogin, setAuthLogin] = useState(false)
+  const [openImmediate, setOpenImmediate] = useState(false)
 
   const { currentUser, authSignUp, authLogin, authLogout } = useUser()
 
@@ -26,15 +28,23 @@ export default function CompsLayoutsNavbar() {
                 && (
                 <>
                   <button
+                    id="nav-bar-signup-btn"
                     className="btn btn-success btn-sm"
                     type="button"
                     onClick={() => setAuthSignUp(true)}
                   >SignUp</button>
                   <button
+                    id="nav-bar-login-btn"
                     className="btn btn-success btn-sm"
                     type="button"
                     onClick={() => setAuthLogin(true)}
                   >LogIn</button>
+                  <a
+                    className="nav-link nav-link-faded has-icon"
+                    onClick={() => {
+                      setOpenImmediate(true)
+                    }}
+                  >Immediate Help</a>
                 </>
                 )}
               {currentUser
@@ -51,6 +61,13 @@ export default function CompsLayoutsNavbar() {
                     <Nav.Link href="/my/posts">My Posts</Nav.Link>
                     <Nav.Link href="/my/notifications">My Notificaations</Nav.Link>
                     <Nav.Link href="/my/favourites">My Favourites</Nav.Link>
+                    <Nav.Link href="https://shielded-falls-80328.herokuapp.com/">Anonymous Chat</Nav.Link>
+                    <a
+                      className="nav-link nav-link-faded has-icon"
+                      onClick={() => {
+                        setOpenImmediate(true)
+                      }}
+                    >Immediate Help</a>
                   </>
                 )}
             </Nav>
@@ -76,6 +93,11 @@ export default function CompsLayoutsNavbar() {
             setAuthLogin(false)
           })
         }}
+      />
+
+      <CompsModalsImmediateHelp
+        show={openImmediate}
+        handleClose={() => setOpenImmediate(false)}
       />
 
     </>
