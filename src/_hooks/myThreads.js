@@ -7,7 +7,7 @@ export default function useMyThreads(page) {
   const { mutate } = useSWRConfig()
   const { data } = useSWR(`/api/my/threads?page=${page}`, fetcher)
 
-  mutate('/api/my/threads')
+  mutate(`/api/my/threads?page=${page}`)
 
   return {
     meta: data?.meta,

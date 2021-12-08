@@ -44,7 +44,7 @@ export default function PagesMyThreads() {
       <div id="pages-my-threads" className="text-center">
         {/* <h1>My Threads</h1> */}
         <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} id="pages-my-thread-main-grid">
-          <Grid item xs={4} id="pages-my-thread-avatar-grid">
+          <Grid item lg={4} id="pages-my-thread-avatar-grid">
             <div className="border rounded d-flex justify-content-center" id="pages-my-thread-avatar-grid-wrap">
               <div id="pages-my-thread-avatar">
                 <Avatar src={currentUser?.avatar} alt="avatar" sx={{ width: 200, height: 200 }} />
@@ -63,7 +63,7 @@ export default function PagesMyThreads() {
               </CardContent>
             </div>
           </Grid>
-          <Grid item xs={8} id="pages-my-thread-grid" className="d-flex justify-content-center">
+          <Grid item lg={8} id="pages-my-thread-grid" className="d-flex justify-content-center">
             <div className="d-flex flex-column" id="pages-my-thread-grid-inside">
               {
           myThreads?.map((myThread) => (

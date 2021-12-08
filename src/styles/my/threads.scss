@@ -1,5 +1,5 @@
 #pages-my-threads {
-  margin-left: 100px;
+  // margin-left: 100px;
 }
 
 #pages-my-thread-main-grid {
@@ -16,17 +16,18 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
-#pages-my-thread-grid-inside {
-  width: 1000px;
-}
+// #pages-my-thread-grid-inside {
+//   width: 1000px;
+// }
 
 #pages-my-thread-grid-inside-card {
   margin-bottom: 20px;
 }
 
 #pages-my-thread-grid-inside-card-card-title {
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
+  width: auto;
 }
 
 .btn-container {

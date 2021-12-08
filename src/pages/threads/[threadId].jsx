@@ -68,7 +68,7 @@ export default function PagesThreadShow() {
             <ColoredLine color="black" />
             <div className="d-flex justify-content-around" id="pages-threads-show-header-btn-group">
               <button
-                className="btn btn-outline-primary btn-sm border-0"
+                className="btn btn-outline-primary btn-lg border-0"
                 id="pages-threads-show-header-edit-btn"
                 type="button"
                 onClick={() => setOpenThreadsUpdate(true)}
@@ -78,9 +78,9 @@ export default function PagesThreadShow() {
                 id="pages-threads-show-header-new-btn"
                 type="button"
                 onClick={() => setOpenPostsCreate(true)}
-              ><i className="fas fa-pen-square" />  New Post</button>
+              ><i className="fas fa-pen-square" />  Respond</button>
               <button
-                className="btn btn-outline-danger btn-sm border-0"
+                className="btn btn-outline-danger btn-lg border-0"
                 id="pages-threads-show-header-delete-btn"
                 type="button"
                 onClick={() => destroyThread()}
@@ -91,8 +91,8 @@ export default function PagesThreadShow() {
       </div>
 
       <main id="thread-main-group" className="thread-main-group d-flex justify-content-center">
-        <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} id="pages-my-favourites-main-grid">
-          <Grid item xs={4} id="pages-my-favourites-avatar-grid">
+        <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 12 }} id="pages-my-favourites-main-grid">
+          <Grid item lg={4} id="pages-my-favourites-avatar-grid">
             <div className="inner-sidebar-body p-0">
               <div className="p-3 h-100" data-simplebar="init">
                 <div className="simplebar-wrapper">
@@ -124,7 +124,7 @@ export default function PagesThreadShow() {
               </div>
             </div>
           </Grid>
-          <Grid item xs={8} id="pages-my-favourites-grid" className="d-flex justify-content-center">
+          <Grid item lg={8} id="pages-my-favourites-grid" className="d-flex justify-content-center">
             <div className="d-flex flex-column forum-content">
               {
             filteredThreadPosts?.map((post) => (

@@ -49,7 +49,7 @@ export default function PagesMyFavourites() {
       <div id="pages-my-favourites" className="text-center">
 
         <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} id="pages-my-favourites-main-grid">
-          <Grid item xs={4} id="pages-my-favourites-avatar-grid">
+          <Grid item lg={4} id="pages-my-favourites-avatar-grid">
             <div className="border rounded d-flex justify-content-center" id="pages-my-favourites-avatar-grid-wrap">
               <div id="pages-my-favourites-avatar">
                 <Avatar src={currentUser?.avatar} alt="avatar" sx={{ width: 200, height: 200 }} />
@@ -68,7 +68,7 @@ export default function PagesMyFavourites() {
               </CardContent>
             </div>
           </Grid>
-          <Grid item xs={8} id="pages-my-favourites-grid" className="d-flex justify-content-center">
+          <Grid item lg={8} id="pages-my-favourites-grid" className="d-flex justify-content-center">
             <div className="d-flex flex-column " id="pages-my-favourites-grid-inside">
               <h1>My Favourites</h1>
               {

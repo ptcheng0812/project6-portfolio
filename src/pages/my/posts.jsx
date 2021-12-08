@@ -50,7 +50,7 @@ export default function PagesMyPosts() {
       <div id="pages-my-posts" className="text-center">
         {/* <h1>My Posts</h1> */}
         <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} id="pages-my-posts-main-grid">
-          <Grid item xs={4} id="pages-my-posts-avatar-grid">
+          <Grid item lg={4} id="pages-my-posts-avatar-grid">
             <div className="border rounded d-flex justify-content-center" id="pages-my-posts-avatar-grid-wrap">
               <div id="pages-my-posts-avatar">
                 <Avatar src={currentUser?.avatar} alt="avatar" sx={{ width: 200, height: 200 }} />
@@ -69,7 +69,7 @@ export default function PagesMyPosts() {
               </CardContent>
             </div>
           </Grid>
-          <Grid item xs={8} id="pages-my-posts-grid" className="d-flex justify-content-center">
+          <Grid item lg={8} id="pages-my-posts-grid" className="d-flex justify-content-center">
             <div className="d-flex flex-column" id="pages-my-posts-grid-inside">
               {
           myPosts?.map((myPost) => (

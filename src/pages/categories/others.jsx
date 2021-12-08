@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import List from '@mui/material/List'
@@ -38,17 +39,28 @@ export default function PagesCategoriesDepression() {
       >
         <h1>Others</h1>
         <div className="d-flex justify-content-center" id="pages-categories-header-btn-container">
-          <button
-            className="btn btn-primary btn-sm"
-            id="pages-categories-header-btn"
-            type="button"
-            onClick={() => setThreadsCreate(true)}
-          >New Thread</button>
+          <div className="d-flex flex-column" id="pages-categories-header-quote">
+            <p>"Out of suffering have emerged the strongest souls; the most massive characters are seared with scars."</p>
+            <div className="d-flex justify-content-center">
+              <button
+                className="btn btn-primary btn-sm"
+                id="pages-categories-header-btn"
+                type="button"
+                onClick={() => setThreadsCreate(true)}
+              >New Thread</button>
+            </div>
+          </div>
         </div>
       </motion.div>
 
       <main id="threads-main-group" className="d-flex justify-content-center">
         <List id="threads-main-group" sx={{ width: '100%', maxWidth: 700, bgcolor: 'background.paper' }}>
+          <div className="card-header pl-0 pr-0">
+            <div className="row no-gutters w-100 align-items-center">
+              <div className="col ml-3">Topics</div>
+              <div className="col-4 text-muted" />
+            </div>
+          </div>
           {
             threads?.map((thread) => (
               thread.category === 'Others'
@@ -74,7 +86,7 @@ export default function PagesCategoriesDepression() {
         </List>
       </main>
 
-      <div id="pages-categories-page-btn" className="d-flex justify-content-around">
+      <div id="pages-categories-page-btn" className="d-flex justify-content-center">
         {
             page > 1 && <button type="button" id="pages-categories-page-btn-btn" className="btn btn-info btn-sm btn-spacing" onClick={() => setPage(page - 1)}>Previous</button>
           }
