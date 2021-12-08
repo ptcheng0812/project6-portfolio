@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Post.init({
-    content: DataTypes.STRING,
+    content: DataTypes.TEXT,
     ThreadId: DataTypes.INTEGER,
     UserId: DataTypes.INTEGER,
     liked: DataTypes.BOOLEAN

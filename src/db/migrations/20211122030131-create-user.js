@@ -53,7 +53,7 @@ module.exports = {
 
       introduction: {
 
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
 
       },
 

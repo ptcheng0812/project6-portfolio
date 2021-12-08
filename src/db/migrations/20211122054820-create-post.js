@@ -8,7 +8,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       ThreadId: {
         type: Sequelize.INTEGER

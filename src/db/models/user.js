@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     dateOfBirth: DataTypes.STRING,
-    introduction: DataTypes.STRING,
+    introduction: DataTypes.TEXT,
     avatar: DataTypes.STRING
   }, {
     timestamps: false,
