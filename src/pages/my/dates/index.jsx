@@ -42,10 +42,10 @@ export default function PagesMyThreads() {
   // console.log(value)
 
   return (<CompsLayout>
-    <aside class="sidebar">
-        <nav class="nav">
+    <aside className="sidebar">
+        <nav className="nav">
           <ul>
-            <li class="active"><a href="#">Welcome</a></li>
+            <li className="active"><a href="#">Welcome</a></li>
             <li><a href="/my/dates">Calendar</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Get In Touch</a></li>
