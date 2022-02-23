@@ -1,0 +1,154 @@
+.board {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: max-content auto;
+}
+
+.board-header {
+  color: black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.board-header-text {
+  font-weight: bold;
+  padding: 5px;
+}
+
+.board-header .left {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  grid-gap: 10px;
+  justify-self: left;
+}
+
+.board-header .right {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  grid-gap: 10px;
+  justify-self: right;
+}
+
+.button {
+  color: rgb(87, 87, 87);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.board-list {
+  background-color: rgb(235, 236, 240);
+  border-radius: 3px;
+  display: grid;
+  grid-auto-rows: max-content;
+  grid-gap: 10px;
+  height: max-content;
+  padding: 10px;
+}
+
+.list-title {
+  font-weight: bold;
+}
+
+.card {
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+  padding: 10px;
+}
+
+.add-card {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+
+/* BUTTON CSS */
+#pages-date-show-new-btn {
+  background: #5E5DF0;
+  border-radius: 999px;
+  box-shadow: #5E5DF0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+// html {
+//   font-family: Arial;
+//   font-size: 16px;
+//   background: #5e42a6;
+// }
+
+.sidebar {
+  position: fixed;
+  width: 15%;
+  height: 100vh;
+  background: #312450;
+  font-size: 0.65em;
+}
+
+.nav {
+  position: relative;
+  margin: 0 15%;
+  text-align: right;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+
+.nav ul {
+  list-style: none;
+
+  li {
+    position: relative;
+    margin: 3.2em 0;
+
+    a {
+      line-height: 5em;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.4em;
+      color: rgba(#FFF, 0.35);
+      display: block;
+      transition: all ease-out 300ms;
+    }
+
+    &.active a {
+      color: white;
+    }
+
+    &:not(.active)::after {
+      opacity: 0.2;
+    }
+
+    &:not(.active):hover a {
+      color: rgba(#FFF, 0.75);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 0.2em;
+      background: black;
+      left: 0;
+      bottom: 0;
+      background-image: linear-gradient(to right, #5e42a6, #b74e91)
+    }
+  }
+}

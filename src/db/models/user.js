@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
       User.Favourites = this.hasMany(models.Favourite)
       User.FavouritedPosts = this.belongsToMany(models.Post, { through: 'Favourite' })
       User.Notifications = this.hasMany(models.Notification)
+      User.Dates = this.hasMany(models.Date)
+      User.Tasks = this.hasMany(models.Task)
     }
   }
   User.init({

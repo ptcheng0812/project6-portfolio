@@ -11,7 +11,7 @@ export default function CompLayout({ children }) {
       <div id="comps-layout">
         <CompsLayoutsNavbar />
         {children}
-        <CompsLayoutsFooter />
+        {/* <CompsLayoutsFooter /> */}
       </div>
     </>
   )
