@@ -15,38 +15,38 @@ import useMyFavourites from '@/_hooks/myFavourites'
 import useAllThreads from '@/_hooks/allThreads'
 import usePosts from '@/_hooks/posts'
 
-const ColoredLine = ({ color }) => (
-  <hr
-    style={{
-      color,
-      backgroundColor: color,
-      height: 2
-    }}
-    id="pages-my-threads-coloured-line"
-  />
-)
+// const ColoredLine = ({ color }) => (
+//   <hr
+//     style={{
+//       color,
+//       backgroundColor: color,
+//       height: 2
+//     }}
+//     id="pages-my-threads-coloured-line"
+//   />
+// )
 
 export default function PagesMyFavourites() {
-  const [page, setPage] = useState(1)
+  // const [page, setPage] = useState(1)
 
-  const { currentUser } = useUser()
-  const { users } = usePublicUsers()
-  const { threads } = useAllThreads()
-  const { destroyFavourite } = useFavourites()
-  const { favourites } = useMyFavourites(page)
-  const { posts } = usePosts()
-  const threadsIds = threads?.map((thread) => thread.id)
+  // const { currentUser } = useUser()
+  // const { users } = usePublicUsers()
+  // const { threads } = useAllThreads()
+  // const { destroyFavourite } = useFavourites()
+  // const { favourites } = useMyFavourites(page)
+  // const { posts } = usePosts()
+  // const threadsIds = threads?.map((thread) => thread.id)
 
-  console.log('>>>>>>>currentUser', currentUser)
-  console.log('>>>>>>>>users', users)
-  console.log('>>>>>>>favourites', favourites)
-  console.log('>>>>>>>posts', posts)
-  console.log('>>>>>>>threads', threads)
-  console.log('>>>>>>>threadsIds', threadsIds)
+  // console.log('>>>>>>>currentUser', currentUser)
+  // console.log('>>>>>>>>users', users)
+  // console.log('>>>>>>>favourites', favourites)
+  // console.log('>>>>>>>posts', posts)
+  // console.log('>>>>>>>threads', threads)
+  // console.log('>>>>>>>threadsIds', threadsIds)
 
   return (
     <CompsLayout>
-      <div id="pages-my-favourites" className="text-center">
+      {/* <div id="pages-my-favourites" className="text-center">
 
         <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} id="pages-my-favourites-main-grid">
           <Grid item lg={4} id="pages-my-favourites-avatar-grid">
@@ -122,7 +122,7 @@ export default function PagesMyFavourites() {
             true && <button type="button" className="btn btn-info" id="page-my-favourites-pagination-btn-btn" onClick={() => setPage(page + 1)}>Load More</button>
           }
         </div>
-      </div>
+      </div> */}
     </CompsLayout>
   )
 }

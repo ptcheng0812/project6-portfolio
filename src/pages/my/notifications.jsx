@@ -10,29 +10,29 @@ import useUser from '@/_hooks/user'
 import usePublicUsers from '@/_hooks/publicUsers'
 import useNotifications from '@/_hooks/notifications'
 
-const ColoredLine = ({ color }) => (
-  <hr
-    style={{
-      color,
-      backgroundColor: color,
-      height: 2
-    }}
-    id="pages-my-threads-coloured-line"
-  />
-)
+// const ColoredLine = ({ color }) => (
+//   <hr
+//     style={{
+//       color,
+//       backgroundColor: color,
+//       height: 2
+//     }}
+//     id="pages-my-threads-coloured-line"
+//   />
+// )
 
 export default function PagesMyNotifications() {
-  const { currentUser } = useUser()
-  const { users } = usePublicUsers()
-  const { myNotifications, destroyNotification } = useNotifications()
+  // const { currentUser } = useUser()
+  // const { users } = usePublicUsers()
+  // const { myNotifications, destroyNotification } = useNotifications()
 
-  console.log('>>>>>>>currentUser', currentUser)
-  console.log('>>>>>>>>>>publicUsers', users)
-  console.log('>>>>>>>>myNotifications', myNotifications)
+  // console.log('>>>>>>>currentUser', currentUser)
+  // console.log('>>>>>>>>>>publicUsers', users)
+  // console.log('>>>>>>>>myNotifications', myNotifications)
 
   return (
     <CompsLayout>
-      <div id="pages-my-notifications" className="text-center">
+      {/* <div id="pages-my-notifications" className="text-center">
 
         <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} id="pages-my-notifications-main-grid">
           <Grid item lg={4} id="pages-my-notifications-avatar-grid">
@@ -82,7 +82,7 @@ export default function PagesMyNotifications() {
             </div>
           </Grid>
         </Grid>
-      </div>
+      </div> */}
     </CompsLayout>
   )
 }
